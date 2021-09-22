@@ -54,12 +54,17 @@ typedef struct s_image
 /*Main*/
 
 void    ft_check_args(int argc, char **argv);
-int main(int argc, char **argv);
+int     main(int argc, char **argv);
 
 /*Init*/
 
 void    ft_map_fill(t_windows *fill);
 void    ft_init(t_windows *init);
+void    ft_init_so_long(char *map);
+
+/*Parse*/
+
+void	ft_map_parse(char *map, t_windows *win);
 
 /*Utils*/
 
