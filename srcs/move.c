@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oventura <oventura@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 10:00:01 by oventura          #+#    #+#             */
-/*   Updated: 2021/09/22 10:00:01 by oventura         ###   ########.fr       */
+/*   Created: 2021/09/22 12:31:57 by oventura          #+#    #+#             */
+/*   Updated: 2021/09/22 12:31:57 by oventura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_error(char *str)
+void	ft_move(t_windows *win, int x, int y)
 {
-	ft_putendl_fd(str, 1);
-	exit(EXIT_FAILURE);
-}
-
-void	ft_move_print(t_windows *move)
-{
-	char	*count;
-
-	count = ft_itoa(move->move);
-	put_image('1', move, 0, 1);
-	put_image('1', move, 0, 0);
-	mlx_string_put(move->mlx, move->win, 10, 20, 0xadff2f, "Movimientos:  ");
-	mlx_string_put(move->mlx, move->win, 80, 20, 0x9acd32, count);
-	ft_putstr_fd("Steps:  ", 1);
-	ft_putendl_fd(count, 1);
-	free(count);
+	win->map[win->pos_y][win->pos_x] = '0';
+	put_image('0', win, win->pos_y, win->pos_x);
+	win->map[win->pos_y + y][win->pos_x + x] = 'P';
+	put_image('P', win, win->pos_y + y, win->pos_x + x);
+	win->move++;
+	step_printer(win);
 }

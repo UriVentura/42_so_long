@@ -29,18 +29,21 @@
 typedef struct s_object
 {
     void	*main_character;
+    
 
 }   t_object;
 
 typedef struct s_windows
 {
-    char **map;
-    int  map_len;
-    int  map_width;
-    void *mlx;
-    void *win;
-    int  exit;
-
+    char    **map;
+    int     map_len;
+    int     map_width;
+    int	    pos_x;
+	int		pos_y;
+    int     move;
+    void    *mlx;
+    void    *win;
+    int     exit;
 
 }   t_windows;
 
