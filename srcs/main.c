@@ -26,3 +26,10 @@ void    ft_check_args(int argc, char **argv)
     else
         ft_error("Error, la extensión es incorrecta");
 }
+
+int main(int argc, char **argv)
+{
+    ft_check_args(argc, argv);
+    ft_init_so_long(argv[1]);
+    return (0);
+}

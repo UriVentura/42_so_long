@@ -1,41 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oventura <oventura@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 09:47:32 by oventura          #+#    #+#             */
-/*   Updated: 2021/09/22 09:47:32 by oventura         ###   ########.fr       */
+/*   Created: 2021/09/22 10:06:50 by oventura          #+#    #+#             */
+/*   Updated: 2021/09/22 10:06:50 by oventura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-/*INCLUDES*/
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <fcntl.h>
-# include "limits.h"
-
-/*FUNCTIONS*/
-
-/*Main*/
-
-void    ft_check_args(int argc, char **argv);
-int main(int argc, char **argv);
-
-/*Init*/
-
-
-
-/*Utils*/
-
-void	ft_error(char *str);
-
-#endif
 
