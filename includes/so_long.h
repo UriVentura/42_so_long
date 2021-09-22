@@ -22,6 +22,24 @@
 # include <fcntl.h>
 # include "limits.h"
 
+/*STRUCTS*/
+
+typedef struct s_object
+{
+
+}   t_object;
+
+typedef struct s_windows
+{
+    char **map;
+
+}   t_windows;
+
+typedef struct s_image
+{
+    
+}   t_image;
+
 /*FUNCTIONS*/
 
 /*Main*/
@@ -31,7 +49,7 @@ int main(int argc, char **argv);
 
 /*Init*/
 
-
+void    ft_map_fill(t_windows *fill);
 
 /*Utils*/
 
