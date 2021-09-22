@@ -45,4 +45,10 @@ void    ft_init(t_windows *init)
 void ft_init_so_long(char *map)
 {
     t_windows init;
+
+    //ft_init_struct(&init);
+    ft_map_parse(map, &init);
+    //ft_map_check(&init);
+    ft_init(&init);
+
 }

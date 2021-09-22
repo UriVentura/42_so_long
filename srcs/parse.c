@@ -36,3 +36,46 @@ void	ft_map_parse(char *map, t_windows *win)
 		ft_error("Error, GNL no valido\n");
 	close(fd);
 }
+
+void	ft_map_count(char *map, t_windows *win)
+{
+	int		fd;
+	int		count;
+	char	*line;
+
+	fd = open(map, O_RDONLY);
+	if (fd < 0)
+		ft_error("Error, no hay ningún archivo\n");
+	count = 1;
+	while (count == 1)
+	{
+		count = get_next_line(fd, &line);
+		free(line);
+		win->map_width += 1;
+	}
+	if (count == -1)
+		ft_error("Error, GNL no valido\n");
+	close(fd);
+}
+
+void	ft_walls_tb(t_windows *wall)
+{
+	int	i;
+
+	i = 0;
+	if ((int)ft_strlen(wall->map[wall->map_width - 1]) != wall->map_len)
+		ft_error("Error, el mapa está mal\n");
+	while (wall->map[0][i])
+	{
+		if (wall->map[0][i] != '1')
+			ft_error("Error, el 'top' está mal\n");
+		i++;
+	}
+	i = 0;
+	while (wall->map[wall->map_width - 1][i])
+	{
+		if (wall->map[wall->map_width - 1][i] != '1')
+			ft_error("Error:, el 'bot' está mal\n");
+		i++;
+	}
+}

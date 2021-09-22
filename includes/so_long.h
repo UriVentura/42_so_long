@@ -65,6 +65,8 @@ void    ft_init_so_long(char *map);
 /*Parse*/
 
 void	ft_map_parse(char *map, t_windows *win);
+void	ft_map_count(char *map, t_windows *win);
+void	ft_walls_tb(t_windows *wall);
 
 /*Utils*/
 
