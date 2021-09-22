@@ -79,3 +79,52 @@ void	ft_walls_tb(t_windows *wall)
 		i++;
 	}
 }
+
+//E = Exi
+//C = Coin (Shuriken)
+//P = Posición de inicio
+//1 = Wall
+//0 = Vacío
+void	ft_body_map(char *map_line, t_windows *check)
+{
+    t_image *img;
+	int	i;
+
+	i = 0;
+	if ((int)ft_strlen(map_line) != check->map_len)
+		ft_error("Error, el mapa está mal\n");
+	if (map_line[0] != '1' || map_line[ft_strlen(map_line) - 1] != '1')
+		ft_error("Error, el mapa está mal\n");
+	while (map_line[i])
+	{
+		if (map_line[i] == 'E')
+			check->exit += 1;
+		else if (map_line[i] == 'C')
+			img->collect += 1;
+		else if (map_line[i] == 'P')
+			img->pos += 1;
+		else if (map_line[i] == '1' || map_line[i] == '0')
+			;
+		else
+			ft_error("Error, el mapa no tiene los simbolos correspondientes\n");
+		i++;
+	}
+}
+
+void	ft_checker(t_windows *check, t_image *img)
+{
+	int	i;
+
+	i = 1;
+	check->map_len = (int)ft_strlen(check->map[0]);
+	ft_walls_tb(check);
+	while (i < check->map_width)
+	{
+		ft_body_map(check->map[i], check);
+		i++;
+	}
+	if (check->exit == 0 || img->collect == 0 || img->pos != 1)
+		ft_error("Error, no están todos los elementos\n");
+	if (check->map_width > 17 || check->map_len > 39)
+		ft_error("Error, no están todos los elementos\n");
+}
