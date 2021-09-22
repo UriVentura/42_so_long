@@ -29,3 +29,20 @@ void    ft_map_fill(t_windows *fill)
         w++;
     }
 }
+
+void    ft_init(t_windows *init)
+{
+    init->mlx = mlx_init();
+    init->win = mlx_new_window(init->mlx, init->map_len * 64, 
+                                init->map_width *64, "so long");
+    ft_map_fill(init);
+    //movimiento 
+    //cierre
+    //animación
+    mlx_loop(init->mlx);
+}
+
+void ft_init_so_long(char *map)
+{
+    t_windows init;
+}
