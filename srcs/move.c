@@ -12,12 +12,51 @@
 
 #include "../includes/so_long.h"
 
-void	ft_move(t_windows *win, int x, int y)
+void	ft_action_move(t_windows *win, int x, int y)
 {
 	win->map[win->pos_y][win->pos_x] = '0';
-	put_image('0', win, win->pos_y, win->pos_x);
+	ft_put_image('0', win, win->pos_y, win->pos_x);
 	win->map[win->pos_y + y][win->pos_x + x] = 'P';
-	put_image('P', win, win->pos_y + y, win->pos_x + x);
+	ft_put_image('P', win, win->pos_y + y, win->pos_x + x);
 	win->move++;
-	step_printer(win);
+	ft_printer(win);
+}
+
+void	ft_move(t_windows *win, int x, int y)
+{
+
+	t_image *image;
+
+	if (win->map[win->pos_y + y][win->pos_x + x] != '1')
+	{
+		if (win->map[win->pos_y + y][win->pos_x + x] == 'D')
+			ft_close(win, 'D');
+		else if (win->map[win->pos_y + y][win->pos_x + x] == 'E' \
+				&& image->collect == 0)
+			ft_close(win, 'W');
+		else if (win->map[win->pos_y + y][win->pos_x + x] == 'C')
+		{
+			moving(win, x, y);
+			image->collect -= 1;
+			if (image->collect == 0)
+				evacuation(win);
+		}
+		else if (win->map[win->pos_y + y][win->pos_x + x] == '0')
+			moving(win, x, y);
+	}
+}
+
+int	ft_push(int key, t_windows *win)
+{
+	if (key == 13)
+		ft_move(win, 0, -1);
+	else if (key == 1)
+		ft_move(win, 0, 1);
+	else if (key == 0)
+		ft_move(win, -1, 0);
+	else if (key == 2)
+		ft_move(win, 1, 0);
+	else if (key == 53)
+		ft_close(win, 'C');
+	return (0);
 }

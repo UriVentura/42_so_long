@@ -18,7 +18,7 @@ void	ft_error(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_move_print(t_windows *move)
+void	ft_printer(t_windows *move)
 {
 	char	*count;
 

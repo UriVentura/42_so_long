@@ -80,6 +80,13 @@ void	ft_checker(t_windows *check, t_image *img);
 /*Utils*/
 
 void	ft_error(char *str);
+void	ft_printer(t_windows *move);
+
+/*Move*/
+
+void	ft_action_move(t_windows *win, int x, int y);
+void	ft_move(t_windows *win, int x, int y);
+int	    ft_push(int key, t_windows *win);
 
 #endif
 
