@@ -111,8 +111,10 @@ void	ft_body_map(char *map_line, t_windows *check)
 	}
 }
 
-void	ft_checker(t_windows *check, t_image *img)
+void	ft_checker(t_windows *check)
 {
+	t_image *img;
+
 	int	i;
 
 	i = 1;

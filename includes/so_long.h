@@ -19,19 +19,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <time.h>
 # include <fcntl.h>
 # include "limits.h"
 
 # include "../mlx/mlx.h"
 
 /*STRUCTS*/
-
-typedef struct s_object
-{
-    void	*main_character;
-    
-
-}   t_object;
 
 typedef struct s_windows
 {
@@ -44,15 +38,24 @@ typedef struct s_windows
     void    *mlx;
     void    *win;
     int     exit;
+    int     time;
+    int     frame;
 
 }   t_windows;
 
 typedef struct s_image
 {
-    int img_h;
-    int img_w;
-    int pos;
-    int collect;
+    int     img_h;
+    int     img_w;
+    void    *img_1;
+    void    *img_0;
+    void    *img_C;
+    void    *img_E;
+    void    *img_character;
+    void    *img;
+    int     pos;
+    int     collect;
+    int     steps;
 
 }   t_image;
 
@@ -66,7 +69,7 @@ int     main(int argc, char **argv);
 /*Init*/
 
 void    ft_map_fill(t_windows *fill);
-void    ft_init(t_windows *init);
+void    ft_init_game(t_windows *init);
 void    ft_init_so_long(char *map);
 
 /*Parse*/
@@ -75,18 +78,29 @@ void	ft_map_parse(char *map, t_windows *win);
 void	ft_map_count(char *map, t_windows *win);
 void	ft_walls_tb(t_windows *wall);
 void	ft_body_map(char *map_line, t_windows *check);
-void	ft_checker(t_windows *check, t_image *img);
+void	ft_checker(t_windows *check);
 
 /*Utils*/
 
 void	ft_error(char *str);
 void	ft_printer(t_windows *move);
+int	    ft_close(t_windows *init, char msg);
+int	    ft_close_x(t_windows *init);
+char	*ft_check_image(char *path);
+void	ft_init_struct(t_windows *init);
 
 /*Move*/
 
 void	ft_action_move(t_windows *win, int x, int y);
 void	ft_move(t_windows *win, int x, int y);
 int	    ft_push(int key, t_windows *win);
+
+/*Fill*/
+
+void	ft_static_images(char key, t_windows *win);
+void	ft_main_character(char key, t_windows *win);
+void	ft_put_image(char key, t_windows *win, int y, int x);
+int	    ft_animation(t_windows *win);
 
 #endif
 

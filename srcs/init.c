@@ -30,15 +30,15 @@ void    ft_map_fill(t_windows *fill)
     }
 }
 
-void    ft_init(t_windows *init)
+void    ft_init_game(t_windows *init)
 {
     init->mlx = mlx_init();
     init->win = mlx_new_window(init->mlx, init->map_len * 64, 
                                 init->map_width *64, "so long");
     ft_map_fill(init);
-    //movimiento 
-    //cierre
-    //animación
+    mlx_hook(init->win, 2, 0, ft_push, init);
+    mlx_hook(init->win, 17, 1L << 2, ft_close_x, init);
+	mlx_loop_hook(init->mlx, ft_animation, init);
     mlx_loop(init->mlx);
 }
 
@@ -46,9 +46,10 @@ void ft_init_so_long(char *map)
 {
     t_windows init;
 
-    //ft_init_struct(&init);
-    ft_map_parse(map, &init);
-    //ft_map_check(&init);
     ft_init(&init);
+    ft_map_count(map, &init);
+    ft_map_parse(map, &init);
+    ft_checker(&init);
+    ft_init_game(&init);
 
 }
