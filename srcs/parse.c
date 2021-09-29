@@ -80,7 +80,7 @@ void	ft_walls_tb(t_windows *wall)
 	}
 }
 
-//E = Exi
+//E = Exit
 //C = Coin (Shuriken)
 //P = Posición de inicio
 //1 = Wall
