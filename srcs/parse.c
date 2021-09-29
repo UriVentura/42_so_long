@@ -75,7 +75,7 @@ void	ft_walls_tb(t_windows *wall)
 	while (wall->map[wall->map_width - 1][i])
 	{
 		if (wall->map[wall->map_width - 1][i] != '1')
-			ft_error("Error:, el 'bot' está mal\n");
+			ft_error("Error, el 'bot' está mal\n");
 		i++;
 	}
 }
