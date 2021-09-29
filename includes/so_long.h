@@ -24,6 +24,8 @@
 # include "limits.h"
 
 # include "../mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../libft/get_next_line.h"
 
 /*STRUCTS*/
 
@@ -40,12 +42,7 @@ typedef struct s_windows
     int     exit;
     int     time;
     int     frame;
-
-}   t_windows;
-
-typedef struct s_image
-{
-    int     img_h;
+	int     img_h;
     int     img_w;
     void    *img_1;
     void    *img_0;
@@ -57,13 +54,13 @@ typedef struct s_image
     int     collect;
     int     steps;
 
-}   t_image;
+}   t_windows;
 
 /*FUNCTIONS*/
 
 /*Main*/
 
-void    ft_check_args(int argc, char **argv);
+void    ft_check_args(int argc); //char **argv);
 int     main(int argc, char **argv);
 
 /*Init*/

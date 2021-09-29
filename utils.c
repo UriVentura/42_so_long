@@ -10,21 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-
-void	ft_error(char *str)
-{
-	ft_putendl_fd(str, 1);
-	exit(EXIT_FAILURE);
-}
+#include "includes/so_long.h"
 
 void	ft_printer(t_windows *move)
 {
 	char	*count;
 
 	count = ft_itoa(move->move);
-	put_image('1', move, 0, 1);
-	put_image('1', move, 0, 0);
+	ft_put_image('1', move, 0, 1);
+	ft_put_image('1', move, 0, 0);
 	mlx_string_put(move->mlx, move->win, 10, 20, 0xadff2f, "Movimientos:  ");
 	mlx_string_put(move->mlx, move->win, 80, 20, 0x9acd32, count);
 	ft_putstr_fd("Steps:  ", 1);
@@ -60,21 +54,19 @@ char	*ft_check_image(char *path)
 
 void	ft_init_struct(t_windows *init)
 {
-	t_image *img;
-
 	init->map_len = 0;
 	init->map_width = 0;
 	init->exit = 0;
-	img->collect = 0;
-	img->pos = 0;
-	img->img_h = 64;
-	img->img_w = 64;
-	img->steps = 0;
+	init->collect = 0;
+	init->pos = 0;
+	init->img_h = 64;
+	init->img_w = 64;
+	init->steps = 0;
 	init->frame = 0;
 	init->time = 0;
-	img->img_character = check_image("./images/img_character.xpm");
-	img->img_0 = check_image("./images/img_0.xpm");
-	img->img_1 = check_image("./images/img_1.xpm");
-	img->img_C = check_image("./images/img_C.xpm");
-	img->img_E = check_image("./images/img_E.xpm");
+	init->img_character = ft_check_image("images/img_character");
+	init->img_0 = ft_check_image("images/img_0");
+	init->img_1 = ft_check_image("images/img_1");
+	init->img_C = ft_check_image("images/img_C");
+	init->img_E = ft_check_image("images/img_E");
 }

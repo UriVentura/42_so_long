@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "includes/so_long.h"
 
 void	ft_map_parse(char *map, t_windows *win)
 {
@@ -87,7 +87,6 @@ void	ft_walls_tb(t_windows *wall)
 //0 = Vacío
 void	ft_body_map(char *map_line, t_windows *check)
 {
-    t_image *img;
 	int	i;
 
 	i = 0;
@@ -100,9 +99,9 @@ void	ft_body_map(char *map_line, t_windows *check)
 		if (map_line[i] == 'E')
 			check->exit += 1;
 		else if (map_line[i] == 'C')
-			img->collect += 1;
+			check->collect += 1;
 		else if (map_line[i] == 'P')
-			img->pos += 1;
+			check->pos += 1;
 		else if (map_line[i] == '1' || map_line[i] == '0')
 			;
 		else
@@ -113,8 +112,6 @@ void	ft_body_map(char *map_line, t_windows *check)
 
 void	ft_checker(t_windows *check)
 {
-	t_image *img;
-
 	int	i;
 
 	i = 1;
@@ -125,7 +122,7 @@ void	ft_checker(t_windows *check)
 		ft_body_map(check->map[i], check);
 		i++;
 	}
-	if (check->exit == 0 || img->collect == 0 || img->pos != 1)
+	if (check->exit == 0 || check->collect == 0 || check->pos != 1)
 		ft_error("Error, no están todos los elementos\n");
 	if (check->map_width > 17 || check->map_len > 39)
 		ft_error("Error, no están todos los elementos\n");

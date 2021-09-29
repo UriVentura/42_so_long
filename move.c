@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "includes/so_long.h"
 
 void	ft_action_move(t_windows *win, int x, int y)
 {
@@ -24,25 +24,22 @@ void	ft_action_move(t_windows *win, int x, int y)
 
 void	ft_move(t_windows *win, int x, int y)
 {
-
-	t_image *image;
-
 	if (win->map[win->pos_y + y][win->pos_x + x] != '1')
 	{
 		if (win->map[win->pos_y + y][win->pos_x + x] == 'D')
 			ft_close(win, 'D');
 		else if (win->map[win->pos_y + y][win->pos_x + x] == 'E' \
-				&& image->collect == 0)
+				&& win->collect == 0)
 			ft_close(win, 'W');
 		else if (win->map[win->pos_y + y][win->pos_x + x] == 'C')
 		{
-			moving(win, x, y);
-			image->collect -= 1;
-			if (image->collect == 0)
-				evacuation(win);
+			ft_action_move(win, x, y);
+			win->collect -= 1;
+			if (win->collect == 0)
+				ft_close_x(win);
 		}
 		else if (win->map[win->pos_y + y][win->pos_x + x] == '0')
-			moving(win, x, y);
+			ft_action_move(win, x, y);
 	}
 }
 

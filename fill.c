@@ -10,39 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "includes/so_long.h"
 
 void	ft_static_images(char key, t_windows *win)
 {
-	t_image *img;
-
 	if (key == '1')
-		img->img = mlx_xpm_file_to_image(win->mlx, img->img_1, \
-											&img->img_h, &img->img_w);
+		win->img = mlx_xpm_file_to_image(win->mlx, win->img_1, \
+											&win->img_h, &win->img_w);
 	if (key == '0')
-		img->img = mlx_xpm_file_to_image(win->mlx, img->img_0, \
-											&img->img_h, &img->img_w);
+		win->img = mlx_xpm_file_to_image(win->mlx, win->img_0, \
+											&win->img_h, &win->img_w);
 	if (key == 'C')
-		img->img = mlx_xpm_file_to_image(win->mlx, img->img_C, \
-											&img->img_h, &img->img_w);
+		win->img = mlx_xpm_file_to_image(win->mlx, win->img_C, \
+											&win->img_h, &win->img_w);
 	if (key == 'E')
-		img->img = mlx_xpm_file_to_image(win->mlx, img->img_E, \
-											&img->img_h, &img->img_w);
+		win->img = mlx_xpm_file_to_image(win->mlx, win->img_E, \
+											&win->img_h, &win->img_w);
 }
 
 void	ft_main_character(char key, t_windows *win)
 {
-	t_image *img;
-
 	if (key == 'P')
-		img->img = mlx_xpm_file_to_image(win->mlx, img->img_character, \
-											&img->img_h, &img->img_w);
+		win->img = mlx_xpm_file_to_image(win->mlx, win->img_character, \
+											&win->img_h, &win->img_w);
 }
 
 void	ft_put_image(char key, t_windows *win, int y, int x)
 {
-	t_image *img;
-
 	if (key == '1' || key == '0' || key == 'C' || key == 'E')
 		ft_static_images(key, win);
 	if (key == 'P')
@@ -51,8 +45,8 @@ void	ft_put_image(char key, t_windows *win, int y, int x)
 		win->pos_y = y;
 	}
 		ft_main_character(key, win);
-	mlx_put_image_to_window(win->mlx, win->win, img->img, \
-								x * img->img_h, y * img->img_w);
+	mlx_put_image_to_window(win->mlx, win->win, win->img, \
+								x * win->img_h, y * win->img_w);
 }
 
 int	ft_animation(t_windows *win)

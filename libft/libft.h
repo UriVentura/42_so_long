@@ -18,6 +18,8 @@
 # include <limits.h>
 # include <stdio.h>
 
+# include "get_next_line.h"
+
 /* First Part */
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
