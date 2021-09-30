@@ -6,7 +6,7 @@
 #    By: oventura <oventura@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/29 18:07:12 by oventura          #+#    #+#              #
-#    Updated: 2021/09/30 09:27:41 by oventura         ###   ########.fr        #
+#    Updated: 2021/09/30 12:09:53 by oventura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,7 @@ SRC =	fill.c \
 LIBFT_DIR = ./libft/
 LIBFT = libft.a
 
-//Probar a compilar mlx too
 MLX_DIR = ./mlx/
-MLX = mlx.a
 
 OBJ = $(SRC:.c=.o)
 
