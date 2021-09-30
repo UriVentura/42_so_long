@@ -26,19 +26,20 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char	*s2;
-	size_t	i;
+	char	*str;
+	size_t	l;
+	size_t	x;
 
-	i = 0;
-	s2 = (char *) malloc(sizeof (*s1) * (ft_strlen(s1) + 1));
-	if (!s2)
+	x = 0;
+	l = ft_strlen(s1);
+	str = (void *)malloc(sizeof(*str) * (l + 1));
+	if (!str)
 		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
+	while (x < l)
 	{
-		s2[i] = s1[i];
-		i++;
+		*(str + x) = *(s1 + x);
+		x++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	str[x] = '\0';
+	return (str);
 }

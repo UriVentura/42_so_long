@@ -21,11 +21,17 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*temp;
+	char	*ptr;
+	size_t	x;
 
-	temp = malloc(count * size);
-	if (!temp)
+	x = 0;
+	ptr = (void *)malloc(count * size);
+	if (!ptr)
 		return (NULL);
-	ft_bzero(temp, (count * size));
-	return (temp);
+	while (x < count * size)
+	{
+		ptr[x] = 0;
+		x++;
+	}
+	return ((void *)ptr);
 }

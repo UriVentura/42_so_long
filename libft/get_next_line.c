@@ -10,92 +10,93 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-/*This function takes the read_line string, splits it in 
- * both line and rest_line, fils lline_out with the line
- * and redefines read_line as the rest.*/
-char	*gnl_write_line(ssize_t len_rd, char *rd_ln, char **ln_out)
+static char	*ft_new_line_checker(char *s)
 {
-	char		*rest_ln;
-	ssize_t		len;
-	ssize_t		rest_len;
+	int		x;
 
-	len = 0;
-	while (*(rd_ln + len) != '\n' && *(rd_ln + len))
-		len++;
-	*ln_out = (char *)malloc(sizeof(char) * (len + 1));
-	if (!*ln_out)
-		return (NULL);
-	*(rd_ln + len) = '\0';
-	rest_len = len_rd - len;
-	while (len-- >= 0)
-		*(*(ln_out) + len + 1) = *(rd_ln + len + 1);
-	rest_ln = (char *)malloc(sizeof(char) * (rest_len));
-	if (rest_len == 0 || !rest_ln)
+	x = 0;
+	if (!s)
+		return (0);
+	while (s[x])
 	{
-		free(rd_ln);
-		free(rest_ln);
-		return (NULL);
+		if (s[x] == '\n')
+			return ((char *)s + x);
+		x++;
 	}
-	while (rest_len-- > 0)
-		*(rest_ln + rest_len) = *(rd_ln + rest_len + 1 + gnl_strlen(*ln_out));
-	free(rd_ln);
-	return (rest_ln);
+	return (NULL);
 }
 
-/*This function reads from the fd until it either ends or reads a
- * \n. Then it passes what's been read to the write_line function.*/
-char	*gnl_read_line(int fd, char *read_line)
+static int	ft_checker_mallocer(int fd, char **line, char **buf)
 {
-	char	*buff;
-	ssize_t	read_ret;
+	if ((read(fd, NULL, 0) < 0) || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	*buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!*buf)
+		return (-1);
+	return (0);
+}
 
-	read_ret = BUFFER_SIZE;
-	while (!(gnl_strchr(read_line, '\n')) && read_ret == BUFFER_SIZE)
+static void	ft_connector_liberator(char **line, char *buf)
+{
+	char	*mem_liber;
+
+	mem_liber = *line;
+	*line = ft_strjoin(*line, buf);
+	free(mem_liber);
+}
+
+static char	*ft_sump_checker(char **sump, char **line)
+{
+	char	*p_nline;
+
+	p_nline = NULL;
+	if (*sump)
 	{
-		buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		if (!buff)
-			return (NULL);
-		read_ret = read(fd, buff, BUFFER_SIZE);
-		if (read_ret < 0)
+		p_nline = ft_new_line_checker(*sump);
+		if (p_nline)
 		{
-			free(buff);
-			if (read_line)
-				free(read_line);
-			return (NULL);
+			*p_nline = '\0';
+			*line = ft_strdup(*sump);
+			ft_strcpy(*sump, ++p_nline);
 		}
-		*(buff + read_ret) = '\0';
-		read_line = gnl_strjoin_n_free(read_line, buff);
-	}
-	return (read_line);
-}
-
-/*This function fills *line with the line read from the archive fd. It
- * has "memory", as in it remembers what was the last line printed from
- * that same fd, and so it prints the next to that last one. If succesfull,
- * the output is 1, if the line is the last one from the file then the
- * output is a 0, and if there has been some kind of error it outputs a -1.*/
-int	get_next_line(int fd, char **line)
-{
-	static char		*r_fd[FD_SETSIZE];
-
-	if (BUFFER_SIZE > 0 && line && fd >= 0 && fd <= FD_SETSIZE)
-	{
-		r_fd[fd] = gnl_read_line(fd, r_fd[fd]);
-		if (!r_fd[fd])
-			return (-1);
 		else
 		{
-			if (!gnl_strchr(r_fd[fd], '\n'))
-			{
-				r_fd[fd] = gnl_write_line(gnl_strlen(r_fd[fd]), r_fd[fd], line);
-				return (0);
-			}
-			r_fd[fd] = gnl_write_line(gnl_strlen(r_fd[fd]), r_fd[fd], line);
+			*line = ft_strdup(*sump);
+			free(*sump);
+			*sump = NULL;
 		}
 	}
 	else
+		*line = ft_calloc(sizeof(char), 1);
+	return (p_nline);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	static char	*sump;
+	char		*buf;
+	char		*p_nline;
+	int			qbr;
+
+	p_nline = NULL;
+	qbr = 1;
+	if (ft_checker_mallocer(fd, line, &buf) < 0)
 		return (-1);
-	return (1);
+	p_nline = ft_sump_checker(&sump, line);
+	while (!p_nline && qbr > 0)
+	{
+		qbr = read(fd, buf, BUFFER_SIZE);
+		buf[qbr] = '\0';
+		p_nline = ft_new_line_checker(buf);
+		if (p_nline)
+		{
+			*p_nline = '\0';
+			sump = ft_strdup(++p_nline);
+		}
+		ft_connector_liberator(line, buf);
+	}
+	free(buf);
+	return (qbr && sump);
 }

@@ -24,15 +24,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char	*temp;
+	int		x;
+	char	sb;
 
-	temp = s;
-	while (*temp)
-		temp++;
-	if ((unsigned char)c == '\0')
-		return ((char *) temp);
-	while (--temp >= s)
-		if ((unsigned char)c == *temp)
-			return ((char *) temp);
+	x = 0;
+	sb = (char)c;
+	while (s[x])
+		x++;
+	while (x >= 0)
+	{
+		if (s[x] == sb)
+			return ((char *)s + x);
+		x--;
+	}
 	return (NULL);
 }

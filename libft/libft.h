@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stdio.h>
 
-# include "get_next_line.h"
+# define BUFFER_SIZE 1000
 
 /* First Part */
 
@@ -46,6 +46,8 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *src);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strcpy(char *dst, const char *src);
 
 /*Second Part*/
 
@@ -76,5 +78,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+/*GNL*/
+
+int		get_next_line(int fd, char **line);
 
 #endif
