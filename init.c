@@ -33,8 +33,8 @@ void    ft_map_fill(t_windows *fill)
 void    ft_init_game(t_windows *init)
 {
     init->mlx = mlx_init();
-    init->win = mlx_new_window(init->mlx, init->map_len * 300, 
-                                init->map_width * 300, "so long");
+    init->win = mlx_new_window(init->mlx, init->map_len * 250, 
+                                init->map_width * 250, "so long");
     ft_map_fill(init);
     mlx_hook(init->win, 2, 0, ft_push, init);
     mlx_hook(init->win, 17, 1L << 2, ft_close_x, init);

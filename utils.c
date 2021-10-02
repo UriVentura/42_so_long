@@ -19,8 +19,8 @@ void	ft_printer(t_windows *move)
 	count = ft_itoa(move->move);
 	ft_put_image('1', move, 0, 1);
 	ft_put_image('1', move, 0, 0);
-	mlx_string_put(move->mlx, move->win, 10, 20, 0xadff2f, "Movimientos:  ");
-	mlx_string_put(move->mlx, move->win, 80, 20, 0x9acd32, count);
+	mlx_string_put(move->mlx, move->win, 10, 20, 0x00008B, "Movimientos:  ");
+	mlx_string_put(move->mlx, move->win, 135, 20, 0x00008B, count);
 	ft_putstr_fd("Steps:  ", 1);
 	ft_putendl_fd(count, 1);
 	free(count);
