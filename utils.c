@@ -59,8 +59,8 @@ void	ft_init_struct(t_windows *init)
 	init->exit = 0;
 	init->collect = 0;
 	init->pos = 0;
-	init->img_h = 64;
-	init->img_w = 64;
+	init->img_h = 32;
+	init->img_w = 32;
 	init->steps = 0;
 	init->frame = 0;
 	init->time = 0;

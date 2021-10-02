@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oventura <oventura@student.42madrid.com    +#+  +:+       +#+         #
+#    By: oventura <oventura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/29 18:07:12 by oventura          #+#    #+#              #
-#    Updated: 2021/09/30 12:09:53 by oventura         ###   ########.fr        #
+#    Updated: 2021/10/02 14:53:42 by oventura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ SRC =	fill.c \
 LIBFT_DIR = ./libft/
 LIBFT = libft.a
 
-MLX_DIR = ./mlx/
-
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
@@ -35,19 +33,15 @@ GREEN='\033[32m'
 GRAY='\033[2;37m'
 CURSIVE='\033[3m'
 
-all: MAKE_LIBFT MAKE_MLX $(NAME)
+all: MAKE_LIBFT $(NAME)
 
 MAKE_LIBFT:
 	@echo "Compiling Libft..."
 	@make -C $(LIBFT_DIR)
 
-MAKE_MLX:
-	@echo "Compiling MLX..."
-	@make -C $(MLX_DIR)
-
 $(NAME): $(OBJ)
 	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-	@gcc $(FLAGS) $(OBJ) $(LINKS) $(LIBFT_DIR)$(LIBFT) $(MLX_DIR)$(MLX) -o $(NAME)
+	@gcc $(FLAGS) $(OBJ) $(LINKS) $(LIBFT_DIR)$(LIBFT) -o $(NAME)
 	@echo $(GREEN)"- Compiled -"$(NONE)
 	@rm $(OBJ)
 	@echo $(CURSIVE)$(GRAY) "     Deleted object files" $(NONE)
