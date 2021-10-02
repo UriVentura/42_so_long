@@ -97,6 +97,7 @@ void	ft_static_images(char key, t_windows *win);
 void	ft_main_character(char key, t_windows *win);
 void	ft_put_image(char key, t_windows *win, int y, int x);
 int	    ft_animation(t_windows *win);
+void	ft_exit(t_windows *win);
 
 #endif
 

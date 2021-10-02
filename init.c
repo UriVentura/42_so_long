@@ -15,16 +15,16 @@
 void    ft_map_fill(t_windows *fill)
 {
     int w;
-    int len = 0;
+    int h;
 
     w = 0;
-    while (fill->map[w][len])
+    while (fill->map[w])
     {
-        len = 0;
-        while (fill->map[w][len])
+        h = 0;
+        while (fill->map[w][h])
         {
-            ft_put_image(fill->map[w][len], fill, w, len);
-            len++;
+            ft_put_image(fill->map[w][h], fill, w, h);
+            h++;
         }
         w++;
     }

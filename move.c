@@ -36,7 +36,7 @@ void	ft_move(t_windows *win, int x, int y)
 			ft_action_move(win, x, y);
 			win->collect -= 1;
 			if (win->collect == 0)
-				ft_close_x(win);
+				ft_exit(win);
 		}
 		else if (win->map[win->pos_y + y][win->pos_x + x] == '0')
 			ft_action_move(win, x, y);
