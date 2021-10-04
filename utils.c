@@ -68,6 +68,6 @@ void	ft_init_struct(t_windows *init)
 	init->img_character = ft_check_image("images/img_character");
 	init->img_0 = ft_check_image("images/img_0");
 	init->img_1 = ft_check_image("images/img_1");
-	init->img_C = ft_check_image("images/img_C");
-	init->img_E = ft_check_image("images/img_E");
+	init->img_coin = ft_check_image("images/img_C");
+	init->img_exit = ft_check_image("images/img_E");
 }

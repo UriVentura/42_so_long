@@ -21,10 +21,10 @@ void	ft_static_images(char key, t_windows *win)
 		win->img = mlx_xpm_file_to_image(win->mlx, win->img_0, \
 											&win->img_h, &win->img_w);
 	if (key == 'C')
-		win->img = mlx_xpm_file_to_image(win->mlx, win->img_C, \
+		win->img = mlx_xpm_file_to_image(win->mlx, win->img_coin, \
 											&win->img_h, &win->img_w);
 	if (key == 'E')
-		win->img = mlx_xpm_file_to_image(win->mlx, win->img_E, \
+		win->img = mlx_xpm_file_to_image(win->mlx, win->img_exit, \
 											&win->img_h, &win->img_w);
 }
 
@@ -39,15 +39,12 @@ void	ft_put_image(char key, t_windows *win, int y, int x)
 {
 	if (key == '1' || key == '0' || key == 'C' || key == 'E')
 		ft_static_images(key, win);
-		if (key == 'P')
+	if (key == 'P')
 	{
-		if (key == 'P')
-		{
-			win->pos_x = x;
-			win->pos_y = y;
-		}
-		ft_main_character(key, win);
+		win->pos_x = x;
+		win->pos_y = y;
 	}
+	ft_main_character(key, win);
 	mlx_put_image_to_window(win->mlx, win->win, win->img, \
 								x * win->img_h, y * win->img_w);
 }
