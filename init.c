@@ -37,7 +37,7 @@ void	ft_init_game(t_windows *init)
 								init->map_width * 64, "so long");
 	ft_map_fill(init);
 	mlx_hook(init->win, 2, 0, ft_push, init);
-	mlx_hook(init->win, 17, 1L << 2, ft_close_x, init);
+	mlx_hook(init->win, 17, 0, ft_close_x, init);
 	mlx_loop_hook(init->mlx, ft_animation, init);
 	mlx_loop(init->mlx);
 }

@@ -19,9 +19,11 @@ void	ft_check_args(int argc, char **argv)
 	if (argc > 2)
 		ft_error("Error, hay demasiados argumentos\n");
 	if (ft_strrchr(argv[1], '.'))
-		if (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber",
+	{
+		if (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber", \
 				max_len(ft_strrchr(argv[1], '.'), ".ber")) != 0)
 			ft_error("Error, la extensión es incorrecta");
+	}
 	else
 		ft_error("Error, la extensión es incorrecta");
 }
