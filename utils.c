@@ -22,7 +22,7 @@ void	ft_printer(t_windows *move)
 	ft_map_fill(move);
 	mlx_string_put(move->mlx, move->win, 10, 20, 0x000000, "Movimientos:  ");
 	mlx_string_put(move->mlx, move->win, 135, 20, 0x000000, count);
-	ft_putstr_fd("Steps:  ", 1);
+	ft_putstr_fd("Movimientos:  ", 1);
 	ft_putendl_fd(count, 1);
 	free(count);
 }
