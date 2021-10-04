@@ -18,6 +18,14 @@
 	characters that appear after a `\0' character are not compared.
 */
 
+size_t	max_len(char *s1, char *s2)
+{
+	if (ft_strlen(s1) > ft_strlen(s2))
+		return (ft_strlen(s1));
+	else
+		return (ft_strlen(s2));
+}
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;

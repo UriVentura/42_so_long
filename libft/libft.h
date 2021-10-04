@@ -46,7 +46,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *src);
-int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const void *s1, const void *s2);
 char	*ft_strcpy(char *dst, const char *src);
 
 /*Second Part*/
@@ -61,6 +61,8 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+size_t	max_len(char *s1, char *s2);
 
 /*Bonus Part*/
 

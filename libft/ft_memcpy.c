@@ -18,7 +18,7 @@
 	which dst and src might overlap should use memmove(3) instead.
 */
 
-void	*ft_memcpy (void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char		*d;
 	const char	*s;

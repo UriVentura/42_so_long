@@ -26,7 +26,6 @@ void	ft_static_images(char key, t_windows *win)
 	if (key == 'E')
 		win->img = mlx_xpm_file_to_image(win->mlx, win->img_E, \
 											&win->img_h, &win->img_w);
-	
 	/*{
 		if (win->collect != 0)
 			win->img = mlx_xpm_file_to_image(win->mlx, win->img_helic_c, \

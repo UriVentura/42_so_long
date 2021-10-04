@@ -80,11 +80,6 @@ void	ft_walls_tb(t_windows *wall)
 	}
 }
 
-//E = Exit
-//C = Coin (Shuriken)
-//P = Posición de inicio
-//1 = Wall
-//0 = Vacío
 void	ft_body_map(char *map_line, t_windows *check)
 {
 	int	i;
@@ -122,7 +117,7 @@ void	ft_checker(t_windows *check)
 		ft_body_map(check->map[i], check);
 		i++;
 	}
-	if (check->exit == 0 || check->collect == 0 || check->pos != 1)
+	if (check->exit != 1 || check->collect == 0 || check->pos != 1)
 		ft_error("Error, no están todos los elementos\n");
 	if (check->map_width > 17 || check->map_len > 39)
 		ft_error("Error, no están todos los elementos\n");

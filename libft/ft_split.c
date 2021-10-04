@@ -38,7 +38,7 @@ int	split_count(char const *str, char c)
 	return (i);
 }
 
-int	split_size (char const *s, char c, int *i)
+int	split_size(char const *s, char c, int *i)
 {
 	int	size;
 

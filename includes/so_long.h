@@ -59,7 +59,7 @@ typedef struct s_windows
 
 /*Main*/
 
-void    ft_check_args(int argc); //, char **argv);
+void    ft_check_args(int argc, char **argv);
 int     main(int argc, char **argv);
 
 /*Init*/
