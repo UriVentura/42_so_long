@@ -26,9 +26,7 @@ void	ft_move(t_windows *win, int x, int y)
 {
 	if (win->map[win->pos_y + y][win->pos_x + x] != '1')
 	{
-		if (win->map[win->pos_y + y][win->pos_x + x] == 'D')
-			ft_close(win, 'D');
-		else if (win->map[win->pos_y + y][win->pos_x + x] == 'E' \
+		if (win->map[win->pos_y + y][win->pos_x + x] == 'E' \
 				&& win->collect == 0)
 			ft_close(win, 'W');
 		else if (win->map[win->pos_y + y][win->pos_x + x] == 'C')
