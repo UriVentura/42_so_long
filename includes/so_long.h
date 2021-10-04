@@ -74,7 +74,6 @@ void	ft_map_parse(char *map, t_windows *win);
 void	ft_map_count(char *map, t_windows *win);
 void	ft_walls_tb(t_windows *wall);
 void	ft_body_map(char *map_line, t_windows *check);
-void	ft_checker(t_windows *check);
 
 /*Utils*/
 
@@ -84,6 +83,7 @@ int	    ft_close(t_windows *init, char msg);
 int	    ft_close_x(t_windows *init);
 char	*ft_check_image(char *path);
 void	ft_init_struct(t_windows *init);
+void	ft_checker(t_windows *check);
 
 /*Move*/
 
