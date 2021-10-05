@@ -6,7 +6,7 @@
 #    By: oventura <oventura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/29 18:07:12 by oventura          #+#    #+#              #
-#    Updated: 2021/10/05 19:53:56 by oventura         ###   ########.fr        #
+#    Updated: 2021/10/05 20:03:42 by oventura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,24 +49,24 @@ WHITE='\033[0;37m'
 all: MAKE_LIBFT	MAKE_MLX $(SRCS) $(NAME)
 
 MAKE_MLX:
-	@echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
-	@echo $(CYAN) "Compiling Mlx..." $(NONE)
-	@echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
-	@echo $(CYAN) "Compiling Mlx...100%" $(NONE)
-	@make -C $(LIBMLX_DIR)
+	echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
+	echo $(CYAN) "Compiling Mlx..." $(NONE)
+	echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
+	echo $(CYAN) "Compiling Mlx...100%" $(NONE)
+	make -C $(LIBMLX_DIR)
 MAKE_LIBFT:
-	@echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
-	@echo $(CYAN) "Compiling LIBFT..." $(NONE)
-	@echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
-	@echo $(CYAN) "Compiling LIBFT...100%" $(NONE)
-	@make -C $(LIBFT_DIR)
+	echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
+	echo $(CYAN) "Compiling LIBFT..." $(NONE)
+	echo $(RED) "-----------------COMPILING $(NAME)-----------------" $(NONE)
+	echo $(CYAN) "Compiling LIBFT...100%" $(NONE)
+	make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJ)
-	@echo $(CYAN) "-----------------COMPILANDO $(NAME)-----------------" $(NONE)
-	@gcc $(CFLAGS) $(OBJ) $(LIBMLX_DIR)$(LIBMLX) $(LIBFT_DIR)$(LIBFT) -o $(NAME)
-	@echo $(GREEN) "-----------------DONE-----------------" $(NONE)
-	@rm $(OBJ)
-	@echo $(RED) "-----------------DELETED OBJECT FILES-----------------" $(NONE)
+	echo $(CYAN) "-----------------COMPILANDO $(NAME)-----------------" $(NONE)
+	gcc $(CFLAGS) $(OBJ) $(LINKS) $(LIBMLX_DIR)$(LIBMLX) $(LIBFT_DIR)$(LIBFT) -o $(NAME)
+	echo $(GREEN) "-----------------DONE-----------------" $(NONE)
+	rm $(OBJ)
+	echo $(RED) "-----------------DELETED OBJECT FILES-----------------" $(NONE)
 
 %.o: %.c
 	@gcc $(INC) $(INC_LIBFT) $(INC_MLX) -o $@ -c $^
@@ -84,3 +84,6 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: clean fclean all
+
+.SILENT:	$(NAME) MAKE_LIBFT MAKE_MLX 
+.PHONY:		clean fclean re MAKE_LIBFT all MAKE_MLX
