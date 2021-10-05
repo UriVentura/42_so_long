@@ -23,8 +23,8 @@
 # include <fcntl.h>
 # include "limits.h"
 
-# include "../mlx/mlx.h"
-# include "../libft/libft.h"
+# include <mlx.h>
+# include <libft.h>
 
 /*STRUCTS*/
 
