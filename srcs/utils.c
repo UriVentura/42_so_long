@@ -12,18 +12,18 @@
 
 #include "so_long.h"
 
-void	ft_printer(t_windows *move)
+void	ft_printer(t_windows *print)
 {
 	char	*count;
 
-	count = ft_itoa(move->move);
-	ft_put_image('1', move, 0, 1);
-	ft_put_image('1', move, 0, 0);
-	ft_map_fill(move);
-	mlx_string_put(move->mlx, move->win, 10, 20, 0x000000, "Movimientos:  ");
-	mlx_string_put(move->mlx, move->win, 135, 20, 0x000000, count);
+	count = ft_itoa(print->move);
+	ft_put_image('1', print, 0, 1);
+	ft_put_image('1', print, 0, 0);
+	ft_map_fill(print);
+	mlx_string_put(print->mlx, print->win, 10, 20, 0x000000, "Movimientos:  ");
+	mlx_string_put(print->mlx, print->win, 135, 20, 0x000000, count);
 	ft_putstr_fd("Movimientos:  ", 1);
-	ft_putendl_fd(count, 1);
+	ft_putendl_fd(count, 0);
 	free(count);
 }
 
@@ -60,6 +60,7 @@ void	ft_init_struct(t_windows *init)
 	init->exit = 0;
 	init->collect = 0;
 	init->pos = 0;
+	init->move = 0;
 	init->img_h = 32;
 	init->img_w = 32;
 	init->steps = 0;

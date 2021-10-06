@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stdio.h>
 
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 10
 
 /* First Part */
 
