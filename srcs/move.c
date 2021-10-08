@@ -15,8 +15,10 @@
 void	ft_action_move(t_windows *win, int x, int y)
 {
 	win->map[win->pos_y][win->pos_x] = '0';
+	ft_map_fill(win);
 	ft_put_image('0', win, win->pos_y, win->pos_x);
 	win->map[win->pos_y + y][win->pos_x + x] = 'P';
+	ft_map_fill(win);
 	ft_put_image('P', win, win->pos_y + y, win->pos_x + x);
 	win->move++;
 	ft_printer(win);

@@ -49,35 +49,6 @@ void	ft_put_image(char key, t_windows *win, int y, int x)
 								x * win->img_h, y * win->img_w);
 }
 
-int	ft_animation(t_windows *win)
-{
-	int	w;
-	int	l;
-
-	w = 0;
-	if ((double)(clock()) / CLOCKS_PER_SEC - win->time >= (double)1 / 10)
-	{
-		win->frame++;
-		win->time = (double)(clock()) / CLOCKS_PER_SEC;
-	}
-	if (win->frame > 49)
-		win->frame = 0;
-	while (win->map[w])
-	{
-		l = 0;
-		while (win->map[w][l])
-		{
-			if (win->map[w][l] == 'D' && win->frame > 24)
-				ft_put_image('D', win, w, l);
-			else if (win->map[w][l] == 'D' && win->frame <= 24)
-				ft_put_image('X', win, w, l);
-			l++;
-		}
-		w++;
-	}
-	return (0);
-}
-
 void	ft_exit(t_windows *win)
 {
 	int	w;
