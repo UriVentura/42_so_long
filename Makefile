@@ -6,7 +6,7 @@
 #    By: oventura <oventura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/29 18:07:12 by oventura          #+#    #+#              #
-#    Updated: 2021/10/06 17:34:09 by oventura         ###   ########.fr        #
+#    Updated: 2021/10/08 20:05:14 by oventura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,5 +85,5 @@ fclean: clean
 
 re: clean fclean all
 
-.SILENT:	$(NAME) MAKE_LIBFT MAKE_MLX 
+.SILENT:	$(NAME) MAKE_LIBFT MAKE_MLX all
 .PHONY:		clean fclean re MAKE_LIBFT MAKE_MLX all

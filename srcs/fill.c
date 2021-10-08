@@ -47,6 +47,7 @@ void	ft_put_image(char key, t_windows *win, int y, int x)
 	ft_main_character(key, win);
 	mlx_put_image_to_window(win->mlx, win->win, win->img, \
 								x * win->img_h, y * win->img_w);
+	mlx_destroy_image(win->mlx, win->img);
 }
 
 void	ft_exit(t_windows *win)
