@@ -32,6 +32,4 @@ void	ft_checker(t_windows *check)
 	}
 	if (check->exit != 1 || check->collect == 0 || check->pos != 1)
 		ft_error("Error, no están todos los elementos\n");
-	if (check->map_width > 17 || check->map_len > 39)
-		ft_error("Error, no están todos los elementos\n");
 }
